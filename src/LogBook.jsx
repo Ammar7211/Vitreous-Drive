@@ -3,7 +3,7 @@ import { supabase } from './supabase';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Plus, BookOpen, Loader2, Map, X } from 'lucide-react';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom'; 
-import './Logbook.css';
+import './LogBook.css';
 
 const LogBook = () => {
   const location = useLocation();
@@ -171,5 +171,6 @@ const LogBook = () => {
     </motion.div>
   );
 };
+
 
 export default LogBook;
