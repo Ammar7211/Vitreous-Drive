@@ -5,7 +5,7 @@ import { supabase } from './supabase';
 import { Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import { Routes, Route } from 'react-router-dom'; // 👈 Note: Router is gone, only Routes and Route remain
-import Home from './Home '; 
+import Home from './Home'; 
 import LogBook from './LogBook'; 
 import './App.css';
 

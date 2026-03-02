@@ -1,0 +1,159 @@
+.home-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass-panel {
+  background: var(--glass-bg, rgba(255, 255, 255, 0.35));
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.7));
+  box-shadow: 0 10px 30px rgba(31, 40, 60, 0.1), inset 0 2px 5px rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+}
+
+/* Header */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; padding: 25px 35px; }
+.dashboard-header h2 { margin: 0; font-size: 1.8rem; color: #1e293b; }
+.dashboard-header p { margin: 5px 0 0 0; color: #64748b; font-weight: 600; font-size: 0.9rem;}
+.total-badge {
+  background: linear-gradient(135deg, #8bb3cd, #3b82f6);
+  color: white; font-size: 2rem; font-weight: 800; padding: 10px 25px; border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Vehicle Grid */
+.vehicle-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.vehicle-card {
+  display: flex; flex-direction: column; overflow: hidden; transition: transform 0.2s;
+  position: relative; /* Crucial for absolute elements inside */
+}
+.vehicle-card:hover { transform: translateY(-5px); }
+
+/* --- 🔴 FIXED ACTION BUTTONS (Edit & Delete) --- */
+.action-buttons {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column; /* Stacks them vertically */
+  gap: 10px; /* Space between buttons */
+  z-index: 10;
+}
+
+/* IMPORTANT: No position:absolute here! */
+.edit-btn, .delete-btn {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.9);
+  width: 38px;  /* Fixed size for perfect circles */
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Reset padding */
+}
+
+.edit-btn { color: #3b82f6; }
+.edit-btn:hover { background: white; transform: scale(1.15); color: #2563eb; }
+
+.delete-btn { color: #ef4444; }
+.delete-btn:hover { background: white; transform: scale(1.15); color: #dc2626; }
+
+/* Danger Badge (Top Left) */
+.danger-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: #ef4444; color: white; width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; cursor: help; z-index: 10;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); animation: pulse-danger 2s infinite;
+}
+@keyframes pulse-danger {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+.danger-badge .tooltip {
+  visibility: hidden; position: absolute; left: 120%; top: 50%; transform: translateY(-50%);
+  background: #1e293b; color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem;
+  font-weight: 700; white-space: nowrap; opacity: 0; transition: 0.2s;
+}
+.danger-badge:hover .tooltip { visibility: visible; opacity: 1; }
+
+/* Vehicle Image & Details */
+.v-image-container {
+  width: 100%; height: 200px; background: rgba(255, 255, 255, 0.6);
+  display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.7);
+  padding: 20px;
+}
+.v-image-container img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));}
+
+.v-details { padding: 20px; }
+.v-details h3 { margin: 0 0 5px 0; font-size: 1.3rem; color: #1e293b; }
+.v-details h3 span { font-size: 0.85rem; color: #3b82f6; background: #e0f2fe; padding: 4px 8px; border-radius: 8px; margin-left: 5px;}
+.v-reg { font-weight: 800; color: #64748b; margin: 0 0 15px 0; font-size: 0.95rem; letter-spacing: 1px;}
+
+.v-stats-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748b; font-weight: 600;}
+.v-stats-row span { display: flex; align-items: center; gap: 6px; }
+
+.type-badge {
+  display: inline-flex; align-items: center; gap: 5px; background: #e0f2fe; color: #0284c7;
+  padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; width: fit-content;
+}
+
+/* Floating Logout Button */
+.logout-btn-fixed {
+  position: fixed; bottom: 30px; left: 30px; background: linear-gradient(135deg, #f87171, #ef4444);
+  color: white; border: none; padding: 14px 24px; border-radius: 16px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; z-index: 50;
+}
+.logout-btn-fixed:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4); }
+
+/* Add Button & Modals */
+.add-vehicle-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 250px;
+  cursor: pointer; color: #3b82f6; font-weight: 700; font-size: 1.1rem; border: 2px dashed rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.2);
+}
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+.modal-content { width: 90%; max-width: 500px; padding: 35px; position: relative; }
+.close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #64748b; cursor: pointer; }
+
+.add-vehicle-form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px;}
+.image-upload-box { border: 2px dashed #93c5fd; background: rgba(255, 255, 255, 0.5); border-radius: 16px; padding: 20px; text-align: center; }
+.upload-label { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #3b82f6; font-weight: 700; cursor: pointer; }
+.file-name { color: #1e293b; font-size: 0.85rem; word-break: break-all;}
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-grid input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255, 255, 255, 0.6); outline: none; font-size: 0.95rem; font-weight: 500;}
+.form-grid input:focus { border-color: #3b82f6; background: white;}
+
+.submit-btn {
+  width: 100%; padding: 16px; margin-top: 10px; background: linear-gradient(to right, #60a5fa, #3b82f6);
+  color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1.05rem; cursor: pointer; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.section-label { font-size: 0.85rem; font-weight: 700; color: #64748b; display: block; margin: 10px 0 10px 4px; text-align: left; }
+.vehicle-type-grid { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 15px; width: 100%;}
+.vt-option {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 12px 0; border-radius: 12px; 
+  border: 1px solid rgba(255,255,255,0.7); background: rgba(255, 255, 255, 0.4); cursor: pointer; transition: 0.2s; color: #64748b;
+}
+.vt-option:hover { background: rgba(255, 255, 255, 0.8); transform: translateY(-2px); }
+.vt-option.active { background: white; color: #3b82f6; border-color: #93c5fd; transform: translateY(-2px) scale(1.05); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2); }
+.vt-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase;}
