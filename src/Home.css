@@ -157,3 +157,23 @@
 .vt-option:hover { background: rgba(255, 255, 255, 0.8); transform: translateY(-2px); }
 .vt-option.active { background: white; color: #3b82f6; border-color: #93c5fd; transform: translateY(-2px) scale(1.05); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2); }
 .vt-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase;}
+/* =========================================
+   🛡️ GHOST CLICK PROTECTOR (HOME PAGE)
+   ========================================= */
+
+/* 1. Elevate the entire Home page wrapper */
+.home-page, 
+.home-container, 
+.fleet-wrapper {       /* <-- Use whatever class wraps your whole home page */
+  position: relative;
+  z-index: 10;
+}
+
+/* 2. Force the Cards & Buttons to punch through the invisible wall */
+.vehicle-card,         /* The white Toyota Yaris card */
+.add-vehicle-card,     /* The dashed 'Add New Vehicle' box */
+.fleet-header-box,     /* The 'Fleet Overview' box at the top */
+.sign-out-btn {        /* Your red Sign Out button */
+  position: relative !important;
+  z-index: 40 !important;
+}
