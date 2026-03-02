@@ -6,7 +6,7 @@ import { ArrowLeft, Plus, BookOpen, Loader2, Map, X, Download, Edit2 } from 'luc
 import { useLocation, useNavigate, Navigate } from 'react-router-dom'; 
 import jsPDF from 'jspdf'; 
 import autoTable from 'jspdf-autotable'; 
-import './Logbook.css';
+import './LogBook.css';
 
 const LogBook = () => {
   const location = useLocation();
@@ -136,7 +136,6 @@ const LogBook = () => {
                 <div style={{ gridColumn: '1 / -1' }}><label>Note (e.g., City {'->'} City)</label><input type="text" placeholder="Lahore -> Islamabad" value={formData.note} onChange={(e) => setFormData({...formData, note: e.target.value})} required /></div>
               </div>
               
-              {/* 👈 FIXED "SAVE LOG" PREVIEW BOX */}
               <div className="lb-calc-preview">
                 {formData.new_reading > currentKm ? <span>Distance to add: <strong>{formData.new_reading - currentKm} km</strong></span> : <span>Enter valid reading.</span>}
                 <button type="submit" className="lb-submit" disabled={saving || formData.new_reading <= currentKm}>{saving ? <Loader2 className="spinner" size={18} /> : 'Save Log'}</button>
@@ -160,7 +159,6 @@ const LogBook = () => {
                     <td className="lb-distance">+{log.distance}</td>
                     <td>{log.note}</td>
                     <td style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                      {/* 👈 FIXED PENCIL ICON (Button type="button" prevents form submission issues) */}
                       <button type="button" onClick={() => openEditModal(log)} style={{ background: 'transparent', border: 'none', boxShadow: 'none', cursor: 'pointer', color: '#64748b', padding: '5px' }}>
                         <Edit2 size={18} />
                       </button>
@@ -173,7 +171,6 @@ const LogBook = () => {
         </div>
       </div>
 
-      {/* --- BULLETPROOF EDIT MODAL (Hardcoded inline styles so it NEVER goes transparent) --- */}
       <AnimatePresence>
         {editingLog && (
           <motion.div 

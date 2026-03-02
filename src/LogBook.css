@@ -1,46 +1,17 @@
 .logbook-page {
-  width: 100%; 
-  max-width: 1000px; 
-  margin: 0 auto; 
-  padding: 20px;
-  display: flex; 
-  flex-direction: column; 
-  gap: 20px;
+  width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px;
+  display: flex; flex-direction: column; gap: 20px;
 }
+.lb-content { padding: 40px; background: rgba(255, 255, 255, 0.8) !important; border-radius: 24px; }
 
-.lb-content { 
-  padding: 40px; 
-  background: rgba(255, 255, 255, 0.6); 
-}
-
-/* --- HEADER FIXES --- */
+/* --- HEADER --- */
 .lb-header { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 30px; 
-  border-bottom: 1px solid rgba(0,0,0,0.1); 
-  padding-bottom: 25px;
-  flex-wrap: wrap; 
-  gap: 20px;
+  display: flex; justify-content: space-between; align-items: flex-start; 
+  margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 20px;
+  flex-wrap: wrap; gap: 20px;
 }
-
-.lb-title { 
-  display: flex; 
-  align-items: center; 
-  gap: 20px; 
-  flex: 1 1 280px; 
-}
-
-.lb-title-icon { flex-shrink: 0; }
-
-.lb-title-text h2 { 
-  margin: 0; 
-  font-size: 1.8rem; 
-  color: #1e293b; 
-  line-height: 1.2;
-}
-
+.lb-title { display: flex; align-items: flex-start; gap: 15px; flex: 1 1 250px; }
+.lb-title-icon { margin-top: 5px; }
 /* Row containing badge and odometer */
 .lb-meta-row {
   display: flex;
@@ -66,236 +37,59 @@
   font-size: 1rem; 
 }
 
-/* --- BUTTONS GROUP --- */
-.lb-header-actions { 
-  display: flex; 
-  gap: 12px; 
-  align-items: center; 
-  flex-wrap: wrap; 
-  justify-content: flex-end; 
-  flex: 1 1 auto;
-}
+/* --- BUTTONS (Protected with !important to stop dull global overrides) --- */
+.lb-header-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 
-/* Shared class for both Download PDF and Add Reading */
-.lb-action-btn { 
-  display: flex; 
-  align-items: center; 
-  gap: 8px; 
-  background: #3b82f6; 
-  color: white; 
-  border: none; 
-  padding: 12px 24px; 
-  border-radius: 12px; 
-  font-weight: 700; 
-  cursor: pointer; 
-  transition: 0.2s; 
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); 
+/* BLUE ADD READING BUTTON */
+.lb-add-btn { 
+  display: flex !important; align-items: center !important; gap: 8px !important; 
+  background: #3b82f6 !important; color: white !important; border: none !important; 
+  padding: 10px 20px !important; border-radius: 12px !important; font-weight: bold !important; 
+  cursor: pointer !important; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3) !important;
+  transition: transform 0.2s, background 0.2s !important;
 }
+.lb-add-btn:hover { background: #2563eb !important; transform: translateY(-2px) !important; }
 
-.lb-action-btn:hover { 
-  background: #2563eb; 
-  transform: translateY(-2px); 
+/* WHITE DOWNLOAD PDF BUTTON */
+.lb-download-btn { 
+  display: flex !important; align-items: center !important; gap: 8px !important; 
+  background: white !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important; 
+  padding: 10px 20px !important; border-radius: 12px !important; font-weight: bold !important; 
+  cursor: pointer !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+  transition: transform 0.2s, background 0.2s !important;
 }
+.lb-download-btn:hover { background: #f8fafc !important; transform: translateY(-2px) !important; }
 
-/* --- FORM STYLES --- */
-.lb-form { 
-  background: rgba(255,255,255,0.8); 
-  border: 1px solid #e2e8f0; 
-  padding: 25px; 
-  border-radius: 16px; 
-  margin-bottom: 30px; 
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-}
+/* --- FORM --- */
+.lb-form { background: rgba(255,255,255,0.9); border: 1px solid #e2e8f0; padding: 25px; border-radius: 16px; margin-bottom: 30px; }
+.lb-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+.lb-form-grid label { font-size: 0.85rem; font-weight: bold; color: #64748b; margin-bottom: 5px; display: block;}
+.lb-form-grid input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; outline: none; }
 
-.lb-form-grid { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  gap: 15px; 
-  margin-bottom: 20px; 
-}
+.lb-calc-preview { display: flex; justify-content: space-between; align-items: center; background: #e0f2fe; padding: 15px; border-radius: 12px; color: #0369a1; }
 
-.lb-form-grid label { 
-  display: block; 
-  font-size: 0.85rem; 
-  font-weight: 700; 
-  color: #64748b; 
-  margin-bottom: 8px; 
-}
-
-.lb-form-grid input { 
-  width: 100%; 
-  padding: 14px; 
-  border-radius: 10px; 
-  border: 1px solid #cbd5e1; 
-  outline: none; 
-  font-size: 1rem; 
-}
-
-.lb-form-grid input:focus { 
-  border-color: #3b82f6; 
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); 
-}
-
-.lb-calc-preview { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background: #e0f2fe; 
-  padding: 15px 25px; 
-  border-radius: 12px; 
-  color: #0369a1; 
-  font-size: 1rem; 
-}
-
+/* GREEN SAVE LOG BUTTON */
 .lb-submit { 
-  background: #10b981; 
-  color: white; 
-  border: none; 
-  padding: 12px 28px; 
-  border-radius: 10px; 
-  font-weight: 700; 
-  cursor: pointer; 
-  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); 
-  transition: 0.2s;
+  background: #10b981 !important; color: white !important; border: none !important; 
+  padding: 12px 28px !important; border-radius: 10px !important; font-weight: bold !important; 
+  cursor: pointer !important; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3) !important; width: auto !important;
 }
+.lb-submit:disabled { background: #94a3b8 !important; cursor: not-allowed !important; box-shadow: none !important; }
 
-.lb-submit:hover:not(:disabled) { 
-  background: #059669; 
-}
+/* --- TABLE --- */
+.lb-table-container { max-height: 400px; overflow-y: auto; background: white; border-radius: 12px; border: 1px solid #e2e8f0; }
+.lb-table { width: 100%; border-collapse: collapse; text-align: left; }
+.lb-table th { background: #f8fafc; padding: 15px; font-size: 0.8rem; color: #64748b; position: sticky; top: 0; z-index: 5; }
+.lb-table td { padding: 15px; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+.lb-distance { color: #10b981 !important; font-weight: bold !important; }
 
-.lb-submit:disabled { 
-  background: #94a3b8; 
-  cursor: not-allowed; 
-  box-shadow: none; 
-}
-
-/* --- TABLE STYLES --- */
-.lb-table-container { 
-  max-height: 500px; 
-  overflow-y: auto; 
-  border-radius: 16px; 
-  background: white; 
-  border: 1px solid rgba(0,0,0,0.05); 
-}
-
-.lb-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-  text-align: left; 
-}
-
-.lb-table th { 
-  background: #f8fafc; 
-  padding: 16px; 
-  font-size: 0.85rem; 
-  text-transform: uppercase; 
-  color: #64748b; 
-  position: sticky; 
-  top: 0; 
-  z-index: 10; 
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.lb-table td { 
-  padding: 16px; 
-  border-bottom: 1px solid #f1f5f9; 
-  font-size: 1rem; 
-  color: #334155; 
-}
-
-.lb-distance { 
-  color: #10b981 !important; 
-  font-weight: 800; 
-}
-
-.lb-table tr:hover { 
-  background: #f8fafc; 
-}
-
-.lb-empty, .lb-loading { 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  padding: 80px; 
-  color: #94a3b8; 
-  gap: 15px;
-}
-
-/* 👈 Edit Icon Button in Table (NO BOX) */
-.lb-edit-icon-btn {
-  background: transparent; 
-  border: none; 
-  outline: none;
-  cursor: pointer; 
-  padding: 4px; 
-  color: #94a3b8; /* Light gray initially */
-  transition: color 0.2s ease; 
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center;
-}
-
-.lb-edit-icon-btn:hover { 
-  color: #3b82f6; /* Turns blue on hover */
-}
-
-/* --- EDIT MODAL STYLES --- */
-.lb-modal-overlay {
-  position: fixed; 
-  inset: 0; 
-  background: rgba(15, 23, 42, 0.6); 
-  backdrop-filter: blur(8px);
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  z-index: 2000; 
-  padding: 20px;
-}
-
-.lb-modal-content {
-  background: white; 
-  width: 100%; 
-  max-width: 450px; 
-  padding: 35px; 
-  border-radius: 20px; 
-  position: relative; 
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.lb-modal-close { 
-  position: absolute; 
-  top: 20px; 
-  right: 20px; 
-  background: none; 
-  border: none; 
-  cursor: pointer; 
-  color: #64748b; 
-  transition: 0.2s;
-}
-
-.lb-modal-close:hover { color: #ef4444; }
-.lb-modal-content h2 { margin-top: 0; margin-bottom: 5px; color: #1e293b; font-size: 1.6rem; }
-
-/* =========================================
-   📱 MOBILE RESPONSIVE FIXES
-   ========================================= */
 @media screen and (max-width: 768px) {
   .lb-content { padding: 20px; }
-  
-  .lb-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .lb-title { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .lb-title-icon { display: none; }
-  .lb-title-text h2 { font-size: 1.5rem; }
-  
-  .lb-header-actions { flex-direction: column; width: 100%; gap: 10px; }
-  .lb-action-btn { width: 100%; justify-content: center; }
-
+  .lb-header { flex-direction: column; }
+  .lb-header-actions { width: 100%; flex-direction: column; }
+  .lb-add-btn, .lb-download-btn { width: 100%; justify-content: center !important; }
   .lb-form-grid { grid-template-columns: 1fr; }
-  .lb-form-grid div[style] { grid-column: span 1 !important; }
-
-  .lb-calc-preview { flex-direction: column; text-align: center; gap: 15px; }
-  .lb-submit { width: 100%; }
-
-  .lb-table th, .lb-table td { white-space: nowrap; padding: 12px; }
+  .lb-calc-preview { flex-direction: column; gap: 15px; text-align: center;}
+  .lb-submit { width: 100% !important; }
+  .lb-table th, .lb-table td { white-space: nowrap; }
 }
