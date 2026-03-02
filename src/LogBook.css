@@ -1,9 +1,23 @@
 .logbook-page {
-  width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px;
-  display: flex; flex-direction: column; gap: 20px;
+  width: 100%; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 20px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px;
+  position: relative; /* Add this */
+  z-index: 10; /* Add this */
 }
-.lb-content { padding: 40px; background: rgba(255, 255, 255, 0.8) !important; border-radius: 24px; }
-
+.lb-content { 
+  padding: 40px; 
+  background: rgba(255, 255, 255, 0.8) !important; 
+  border-radius: 24px; 
+  
+  /* 👇 THE MAGIC FIX 👇 */
+  position: relative !important; 
+  z-index: 40 !important; /* Forces the card to sit ABOVE the invisible blocker */
+}
 /* --- HEADER --- */
 .lb-header { 
   display: flex; justify-content: space-between; align-items: flex-start; 
