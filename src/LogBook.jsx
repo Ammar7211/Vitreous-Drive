@@ -6,7 +6,7 @@ import { ArrowLeft, Plus, BookOpen, Loader2, Map, X, Download, Edit2 } from 'luc
 import { useLocation, useNavigate, Navigate } from 'react-router-dom'; 
 import jsPDF from 'jspdf'; 
 import autoTable from 'jspdf-autotable'; 
-import './LogBook.css';
+import './Logbook.css';
 
 const LogBook = () => {
   const location = useLocation();
@@ -209,6 +209,5 @@ const LogBook = () => {
     </motion.div>
   );
 };
-
 
 export default LogBook;
